@@ -1,57 +1,117 @@
 <?php
 session_start();
+require('php/functions.php');
+
 if(empty($_SESSION['nombre'])){
     header('Location: login.php');
     exit;
 }
 ?>
 <!DOCTYPE html>
+
 <head>
-    <title>Principal</title>
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="bootstrap/css/estilos.css?v=<?php echo time();?>" type="text/css">
-</head>
+  <title>Principal</title>
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- <link rel="stylesheet" href="css/estilos-principacss"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <style>
+      body{
+        margin: 5px;
+      }
+    </style>
+  </head>
+
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">
-        <img src="images/logo.png" width="60px" height="60px">
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+ 
+  <div class="section blue lighten-4" >
+    <a href="#" class="sidenav-trigger btn-floating pulse" data-target="menu-side" style="position: fixed;">
+      <i class="material-icons">menu</i>
+    </a>
+  
+  <ul id="menu-side" class="sidenav">
+    <li >
+      <div class="user-view" style="padding-left: 60px;">
       
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="cerrar_sesion.php">Salir</a>
-            </li>
-          </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
-        </div>
-      </nav>
+        <img src="images/logo.png" style="height: 150px; width: 150px;" >
+      
+    </div>
+  </li>
+    <li><a href="#!"><i class="material-icons">event</i>EVENTOS</a></li>
+    <li><a href="#!"><i class="material-icons">handyman</i>ORD DE REPARACION</a></li>
+    <li><a href="#!"><i class="material-icons">assessment</i>ESTADISTICAS</a></li>
+    
+    <li><a href="#!"><i class="material-icons">list</i>ABM COD DE REPARACION</a></li>
+    <li><a href="#!"><i class="material-icons">list</i>ABM COD DE EVENTOS</a></li>
+    <li><a href="#!"><i class="material-icons">list</i>ABM USUARIOS</a></li>
+    
+    <li><a href="#!"><i class="material-icons">manage_accounts</i>CONFIGURAR USUARIO</a></li>
+    <li><a href="login.php"><i class="material-icons">logout</i>CERRAR SESIÓN</a></li>
+  </ul>
+  
+  
+       
+  
+    <table class="highlight centered" id="tabla_eventos">
+      <h5 class="center-align">LISTA DE EVENTOS</h5>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>FECHA</th>
+          <th>TECNICO</th>
+          <th>CALLE</th>
+          <th>ALTURA</th>
+          <th>TIPO</th>
+          <th>ESTADO</th>
+          <th>DETALLES</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php
+        $json = get_events();
+        for ($i=0;$i<count($json);$i++){?>
+        <tr>
+          <td><?php echo $json[$i]["id_evento"];?> </td>
+          <td>
+            <?php echo $json[$i]["fecha_creacion"];?>
+          </td>
+          <td>
+            <?php echo $json[$i]["legajo_tecnico"];?>
+          </td>
+          <td>
+            <?php echo $json[$i]["calle"];?>
+          </td>
+          <td>
+            <?php echo $json[$i]["altura"];?>
+          </td>
+          <td>
+            <?php echo $json[$i]["desc_falla"];?>
+          </td>
+          <td>
+            <?php echo $json[$i]["desc_estado"];?>
+          </td>
+          <td><a href="#" class="boton" id="guardar_bt"><span class="material-icons">
+                info
+              </span></a></td>
+        </tr>
+        <?php } ?>
 
-      <script src="bootstrap/js/jquery-3.6.0.min.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-    <script src="https://unpkg.com/@popperjs/core@2"></script>
-
+      </tbody>
+    </table>
+  </div>
+  <form action="detalle_evento.php" method="post" id="formu">
+    <input type="hidden" name="id_evento" id="evento" value="hola">
+  </form>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="js/main.js" charset="utf-8"></script>
 </body>

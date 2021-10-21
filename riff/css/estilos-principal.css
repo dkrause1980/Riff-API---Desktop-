@@ -1,0 +1,169 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-family: 'Roboto', sans-serif;;
+    
+}
+
+a{
+    text-decoration: none;
+}
+
+#sidebar{
+    position:fixed;
+    width: 250px;
+    height: 100%;
+    background: #6B7AA1;
+    left: -250px;
+    transition: all 500ms linear;
+    display: flex;
+    flex-direction: column;
+    font-size: small;
+    align-items: center;
+    z-index: 20;
+    
+}
+
+#sidebar.active{
+
+    left: 0px;
+
+}
+
+.toggle-btn{
+    position: absolute;
+    left: 260px;
+    top: 20px;
+    cursor: pointer;
+}
+
+.toggle-btn span{
+    display: block;
+    width: 30px;
+    text-align: center;
+    font-size: 20px;
+    border: 1px solid #000;
+}
+
+.logotipo{
+    
+    margin-top: 20px;
+    width: 150px;
+    height: 150px;
+}
+
+#lista-principal{
+    margin-top: 50px;
+}
+
+#sidebar ul li a{
+    color: rgba(50,50,50,.9) ;
+    text-decoration: none;
+    
+}
+#sidebar ul li:hover{
+    background: rgba(223, 202, 12, 0.788);
+}
+
+#sidebar ul li {
+
+    padding: 10px 10px;
+    border-bottom: rgba(100, 100, 100, .3);
+}
+
+.material-icons-outlined{
+    vertical-align: bottom;
+}
+
+.detalles{
+    position: fixed;
+    background: coral;
+    width: 100%;
+    height: 200px;
+    border: 1px solid #000;
+    display: flex;
+}
+.tabla{
+    background:#fff;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    margin: 0px 20px 0px 20px;
+
+}
+
+/* table{
+    width: 100%;
+
+}
+
+th{
+    background: #;
+    color: white;
+    padding: 10px 20px;
+    font-size: small;
+}
+td{
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+    padding: 10px 20px;
+    font-size: small;
+}
+
+tbody tr:nth-child(even){
+    background: #ccc;
+}
+caption{
+    background: #DF2E2E;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 1rem;
+}
+ */
+td .material-icons{
+    color: #DF2E2E;
+}
+
+.det_principales{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: 30px ;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+
+.ubicacion{
+    width: 150px;
+    height: 150px;
+    background: #DF2E2E;
+}
+.otros_detalles{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+
+
+/* #guardar_bt{
+    background: #6B7AA1;
+    border: 1px solid #000;
+    padding: 10px;
+    border-radius: 30px;
+    height: 20px;
+}
+ */
+
+
+
+
+
+
+
+

@@ -7,8 +7,9 @@ if (!empty($_POST['btnIng'])){
     $legajo = $_POST['legajo1'];
     $pass = $_POST['pass'];
     $id = validar_login($legajo,$pass);
-    
     tipo_error($id);
+    
+    
     
 }
 if (!empty($_POST['cambiar'])){
@@ -21,70 +22,41 @@ if (!empty($_POST['cambiar'])){
 
 ?>
 <!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <title>Login</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="bootstrap/css/estilos.css?v=<?php echo time();?>" type="text/css">
-    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riff-Login</title>
+    <link rel="stylesheet" href="plugins/sweetalert2.min.css">
+    <link rel="stylesheet" href="css/estilos2.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
+
 </head>
 
-<body oncontextmenu='return false' class='snippet-body'>
-    
-    <div class="row">
-        <div class="col-md-6 mx-auto p-0">
-            <div class="card">
-                <div class="login-box">
-                    <div class="login-snip"> <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label
-                            for="tab-1" class="tab">Login</label> <input id="tab-2" type="radio" name="tab"
-                            class="sign-up"><label for="tab-2" class="tab">Cambiar Pass</label>
-                        <div class="login-space">
-                            <form role="form" method="POST">
-                            <div class="login">
-                                <div class="group"> <label for="user" class="label">Legajo</label> <input id="user"
-                                        type="text" name = "legajo1" class="input" minlength="6" maxlength="6" placeholder="Ingresar legajo sin u" required> </div>
-                                <div class="group"> <label for="pass" class="label">Password</label> <input id="pass"
-                                        type="password" name="pass" class="input" data-type="password" maxlength="8"
-                                        placeholder="Ingresar Password" required> </div>
-                                <!--<div class="group"> <input id="check" type="checkbox" class="check" checked> <label
-                                        for="check"><span class="icon"></span> Keep me Signed in</label> </div>-->
-                                <div class="group"> <input type="submit" class="button" name="btnIng" value="Ingresar"> </div>
-                                
-                                <div class="hr"></div>
-                                <!-- <div class="foot"><h2 class="warning"></h2></div> -->
-                            </div>
-                            </form>
-                            <form role="form" method="POST">
-                            <div class="sign-up-form">
-                                <div class="group"> <label for="user" class="label">Legajo</label> <input id="user"
-                                        type="text" class="input" minlength="6" maxlength="6" placeholder="Legajo" name="legajo" required> </div>
-                                <div class="group"> <label for="pass" class="label">Password anterior</label> <input id="pass"
-                                        type="password" class="input" data-type="password"
-                                        placeholder="Password actual" name="passv" required maxlength="8"> </div>
-                                <div class="group"> <label for="pass" class="label">Password nuevo</label> <input
-                                        id="pass" type="password" class="input" data-type="password"
-                                        placeholder="Nuevo password" name="passn" required maxlength="8"> </div>
-                                <div class="group"> <label for="pass" class="label">Repetir Password</label> <input
-                                        id="pass" type="password" name="passnr" class="input" data-type="password" placeholder="Repetir Nuevo Password"
-                                        required maxlength="8">
-                                </div>
-                                <div class="group"> <input type="submit" name="cambiar" class="button" value="Cambiar"> </div>
-                                <div class="group"></div>
-                                <div class="hr"></div>
-                                <!-- <div class="foot"> <label for="tab-1">Olvid&oacute; su contrase&ntilde;a?</label> </div> -->
-                            </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+<body>
+    <div class="container">
+        
+            <form role="form" class="form" method="POST">
+                <h2>INGRESO</h2>
+                <input id="user" type="text" name="legajo1" class="input" minlength="6" maxlength="6"
+                            placeholder="LEGAJO" required>
+                
+                <input id="pass" type="password" name="pass" class="input" data-type="password" maxlength="8"
+                            placeholder="PASSWORD" required>
+                <input type="submit" name="btnIng" value="INGRESAR" id="submit" >
+                
+            </form>
+            
+            <div class="side">
+                <img src="/riff/images/logo.png" alt="IMAGEN">
             </div>
-        </div>
+        
     </div>
-    <script src="bootstrap/js/jquery-3.6.0.min.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-    <script src="https://unpkg.com/@popperjs/core@2"></script>
-
-
+    
 </body>
+
+</html>
