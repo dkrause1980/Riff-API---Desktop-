@@ -7,7 +7,7 @@ class DataBase:
     def __init__(self):
         self.connection = pymysql.connect(
             host = 'localhost',
-            user = 'root',
+            user = 'diego',
             password = 'root',
             db = 'Riff2'
         )
@@ -36,7 +36,7 @@ class DataBase:
             empleado = self.cursor.fetchone()
             if empleado!=None:
                 
-                content = {'legajo':empleado[0],'nombre':empleado[2],'contrasenia':empleado[9],'nivel':empleado[10]}
+                content = {'legajo':empleado[0],'nombre':empleado[2],'contrasenia':empleado[9],'apellido':empleado[3],'nivel':empleado[10]}
             else:
                 content = {}
             return content

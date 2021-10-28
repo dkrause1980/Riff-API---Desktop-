@@ -22,13 +22,14 @@ def get_log(emp):
     res = db.login(emp,clave["contrasenia"])
     return jsonify(res)
 
-@app.route('/cambiarc/<string:emp>',methods=['PUT'])
+@app.route('/login/<string:emp>',methods=['PATCH'])
 def cambiar_pass(emp):
     db = DataBase()
     clave=request.json
+    print (clave)
     #print(clave[0])
-    empleado = db.change_pass(clave[0]["contrasenia"],emp)
-    return "{} registros afectados".format(empleado)
+    empleado = db.change_pass(clave["contrasenia"],emp)
+    return clave
 
 @app.route('/codigos_eventos')
 def get_cod_eventos():
