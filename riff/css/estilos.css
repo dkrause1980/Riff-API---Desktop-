@@ -1,0 +1,70 @@
+body {
+    margin: 0px;
+  }
+
+  .section {
+    position: fixed;
+    width: 13%;
+    height: 100%;
+    background: #6B7AA1;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    
+    
+  }
+
+  #barra{
+    left: 200px;
+  }
+
+  .nav-wrapper{
+    left: 240px;
+  }
+
+  .contenido{
+
+    position: relative;
+    margin-left: 260px;
+    width: 87%;
+    padding-top: 75px;
+    top: 20px;
+    
+  }
+
+  nav{
+    position: fixed;
+    z-index: 100;
+  }
+
+  #menu-side li{
+    
+    display: flex;
+    padding: 10px;
+    align-items: flex-end;
+    
+  }
+
+  #menu-side li a{
+
+    color:black;
+    margin-left: 10px;
+  }
+
+  #menu-side li:not(:first-child):hover{
+    background: #3F72AF;
+    font-weight: bold;
+  }
+
+  #grafics{
+    display: flex;
+    justify-content: space-around;
+  }
+
+  thead:hover{
+    cursor: pointer;
+  }
+  
+  
